@@ -47,6 +47,10 @@ Resources:
                   - !Sub arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/thiscovery-crm-${EnvironmentTagName}-notifications
                   - !Sub arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/thiscovery-crm-${EnvironmentTagName}-notifications/index/*
                 Effect: "Allow"
+              - Action:
+                  - "lambda:InvokeFunction"
+                Resource: "*"
+                Effect: "Allow"
       RoleName: !Sub ${AWS::StackName}-${AWS::Region}-TestingExec
       Tags:
         - Key: "Role"
