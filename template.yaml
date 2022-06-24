@@ -43,9 +43,7 @@ Resources:
                 - "dynamodb:Scan"
                 - "dynamodb:Query"
                 - "dynamodb:ConditionCheckItem"
-                Resource:
-                  - !Sub arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/thiscovery-crm-${EnvironmentTagName}-notifications
-                  - !Sub arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/thiscovery-crm-${EnvironmentTagName}-notifications/index/*
+                Resource: "*"
                 Effect: "Allow"
               - Action:
                   - "lambda:InvokeFunction"
