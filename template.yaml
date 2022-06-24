@@ -49,6 +49,11 @@ Resources:
                   - "lambda:InvokeFunction"
                 Resource: "*"
                 Effect: "Allow"
+              - Action:
+                  - "logs:DescribeLogStreams"
+                  - "logs:GetLogEvents"
+                Resource: "*"
+                Effect: "Allow"
       RoleName: !Sub ${AWS::StackName}-${AWS::Region}-TestingExec
       Tags:
         - Key: "Role"
