@@ -30,8 +30,7 @@ Resources:
                 Effect: "Allow"
               - Action:
                 - "secretsmanager:GetSecretValue"
-                Resource:
-                  - !Sub arn:${AWS::Partition}:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:/${EnvironmentTagName}/aws-connection*
+                Resource: "*"
                 Effect: "Allow"
               - Action:
                 - "dynamodb:PutItem"
@@ -43,12 +42,15 @@ Resources:
                 - "dynamodb:Scan"
                 - "dynamodb:Query"
                 - "dynamodb:ConditionCheckItem"
-                Resource:
-                  - !Sub arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/thiscovery-crm-${EnvironmentTagName}-notifications
-                  - !Sub arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/thiscovery-crm-${EnvironmentTagName}-notifications/index/*
+                Resource: "*"
                 Effect: "Allow"
               - Action:
                   - "lambda:InvokeFunction"
+                Resource: "*"
+                Effect: "Allow"
+              - Action:
+                  - "logs:DescribeLogStreams"
+                  - "logs:GetLogEvents"
                 Resource: "*"
                 Effect: "Allow"
       RoleName: !Sub ${AWS::StackName}-${AWS::Region}-TestingExec
