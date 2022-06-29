@@ -52,6 +52,7 @@ Resources:
                   - "logs:DescribeLogStreams"
                   - "logs:GetLogEvents"
                   - "logs:StartQuery"
+                  - "logs:GetQueryResults"
                 Resource: "*"
                 Effect: "Allow"
       RoleName: !Sub ${AWS::StackName}-${AWS::Region}-TestingExec
